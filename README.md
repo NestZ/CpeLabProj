@@ -16,9 +16,10 @@ REACT_APP_PROJECTID=
 REACT_APP_STORAGEBUCKET=
 REACT_APP_MESSAGINGSENDERID=
 REACT_APP_APPID=
+REACT_APP_MEASUREMENT_ID=
 ```
 
-4.fill `.env.local` file with :
+4.fill `.env.local` file with and firebase setting :
 
 ```
 REACT_APP_APIKEY=<...>
@@ -28,6 +29,5 @@ REACT_APP_PROJECTID=<...>
 REACT_APP_STORAGEBUCKET=<...>
 REACT_APP_MESSAGINGSENDERID=<...>
 REACT_APP_APPID=<...>
+REACT_APP_MEASUREMENT_ID=<...>
 ```
-
-(fill firebase setting)
