@@ -1,13 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { apiResponse: "" };
+  }
+
+  callAPI() {
+    fetch("http://localhost:3001/")
+        .then(res => res.text())
+        .then(res => this.setState({ apiResponse: res }));
+  }
+
+  componentWillMount() {
+      this.callAPI();
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <header className="App-header">
+          dfgdfgdfgdfg
+          {this.state.apiResponse}
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
