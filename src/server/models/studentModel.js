@@ -1,3 +1,4 @@
+require('dotenv').config({path: '../../../.env.local'});
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -13,7 +14,6 @@ const studentSchema = new mongoose.Schema({
         type : String,
         required : true,
         unique : true,
-        lowercase : true,
         validator : (value) => {
             if(!validator.isEmail()){
                 throw new Error('Invalid email !');
@@ -25,9 +25,13 @@ const studentSchema = new mongoose.Schema({
         required : true,
         minlength : 6
     },
+    courses : [],
     tokens : [{
-        token : {type : String, required : true}
-    }],
+        token : {
+            type : String,
+            required : true
+        }
+    }]
 });
 
 studentSchema.pre('save', async function(next){
@@ -42,11 +46,10 @@ studentSchema.methods.generateAuthToken = async function(){
     const student = this;
     const payload = {
         _id : student._id,
-        email : student.email,
-        admin : student.admin
+        email : student.email
     };
 
-    const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn : '2h', issuer : 'CMU'});
+    const token = jwt.sign(payload, process.env.REACT_APP_TOKEN_KEY, {expiresIn : '2h', issuer : 'CMU'});
     student.tokens = student.tokens.concat({token});
     await student.save();
     return token;
