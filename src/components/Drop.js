@@ -27,16 +27,17 @@ export default class Studentlist extends Component{
         componentDidMount() {
             this.fetchUsers();
         }
-
+        
         render(){
             return(
-           <div class="container is-fullhd">
-                    <div><h3 class="title">Student List</h3></div>
+                <div class="container is-fullhd">
+                    <div><h3 class="title">Courses List</h3></div>
                                 <table class="table is-fullwidth table is-responsive">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
+                                            <th>Courses</th>
+                                            <th>Creadit</th>
+                                            <th>Drop</th>
                                         </tr>
                                     </thead>
 
@@ -44,17 +45,20 @@ export default class Studentlist extends Component{
 
                     {!this.state.isLoading ? (
                         this.state.users.map (user => {
-                            const { name, email} = user;
+                            const { courses, email} = user
+                            console.log(courses[0].id)
                             return(
-                                    <tbody>
-                                        <td>{name}</td>
-                                        <td>{email}</td>
+                                <tbody>
+                                        <td>{courses[0].id}</td>
+                                        <td></td>
+                                        <td><button>Drop</button></td>
                                     </tbody>
                             
                             );
                         })) : (<h3>Loading...</h3>)}
                         </table>
            </div>
+           
         )
     }
 }
