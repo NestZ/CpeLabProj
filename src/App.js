@@ -4,6 +4,8 @@ import './App.css';
 import MainMenu from './components/Main_menu'
 import Studentlist from './components/Studentlist'
 import Testtable from './components/Testtable'
+import Course from './components/Course'
+import Login from './components/Login'
 
 class App extends Component {
   constructor(props) {
@@ -27,14 +29,16 @@ class App extends Component {
       <div className="App">
       <Route exact path="/" render={ props => (
           <div>
-            <MainMenu></MainMenu>
+            <Login></Login>
           </div>
         )} />
 
 
         <Route path="/mainmenu" component={MainMenu} />
         <Route path="/Studentlist" component={Studentlist} />
-        <Route path="/Testtable" component={Testtable}/>      
+        <Route path="/Testtable" component={Testtable}/>     
+        <Route path="/Course" component={Course}/> 
+        <Route path='/Login' component={Login}/>
       </div>
     </Router>
     );
