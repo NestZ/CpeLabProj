@@ -6,6 +6,7 @@ import Studentlist from './components/Studentlist'
 import Testtable from './components/Testtable'
 import Course from './components/Course'
 import Login from './components/Login'
+import Register from './components/Register'
 
 class App extends Component {
   constructor(props) {
@@ -20,25 +21,20 @@ class App extends Component {
   }
 
   componentWillMount() {
-      this.callAPI();
+      //this.callAPI();
   }
 
   render(){
     return (
     <Router>
-      <div className="App">
-      <Route exact path="/" render={ props => (
-          <div>
-            <Login></Login>
-          </div>
-        )} />
-
-
+      <div className="App"> 
+      <Route exact path="/" component={Course}/>
         <Route path="/mainmenu" component={MainMenu} />
         <Route path="/Studentlist" component={Studentlist} />
         <Route path="/Testtable" component={Testtable}/>     
         <Route path="/Course" component={Course}/> 
         <Route path='/Login' component={Login}/>
+        <Route path='/Register' component={Register}/>
       </div>
     </Router>
     );

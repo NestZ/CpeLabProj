@@ -1,18 +1,19 @@
 import React , { Component } from 'react';
+import 'bulma/css/bulma.css'
 export default class Login extends Component{
 render(){
     return (
    <div>     
-    <div><h3>Login</h3></div>
+    <div><h1>Login</h1></div>
     <form>
     <label>
         Email:
     <input type="text" name="Email"/>
-    </label>
+    </label><br/>
     <label>
         Password:
     <input type="text" name="Password"/>
-    </label>
+    </label><br/>
      <input type="submit" value="Submit" />
     </form>
     </div>
