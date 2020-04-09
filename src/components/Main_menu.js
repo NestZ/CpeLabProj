@@ -13,7 +13,7 @@ export default class MainMenu extends Component  {
               </h3>
             </Link>
 
-            <Link to="/Testtable">
+            <Link to="/Register">
               <h3>
                 <button type="button" className="btn btn-primary">Register sunj</button>
               </h3>
