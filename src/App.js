@@ -35,7 +35,6 @@ class App extends Component {
         <Route path="/me" component={Profile} />
         <Route path="/mainmenu" component={MainMenu} />
         <Route path="/Studentlist" component={Studentlist} />
-        <Route path="/Testtable" component={Testtable}/>
       </div>
     </Router>
     );
