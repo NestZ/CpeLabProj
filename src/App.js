@@ -20,24 +20,18 @@ class App extends Component {
   }
 
   componentWillMount() {
-      this.callAPI();
+      //this.callAPI();
   }
 
   render(){
     return (
     <Router>
       <div className="App">
-      <Route exact path="/" render={ props => (
-          <div>
-            <Login></Login>
-          </div>
-        )} />
-
-
+        <Route exact path="/" component={Login} />
         <Route path="/mainmenu" component={MainMenu} />
         <Route path="/Studentlist" component={Studentlist} />
-        <Route path="/Testtable" component={Testtable}/>     
-        <Route path="/Course" component={Course}/> 
+        <Route path="/Testtable" component={Testtable}/>
+        <Route path="/Course" component={Course}/>
         <Route path='/Login' component={Login}/>
       </div>
     </Router>
