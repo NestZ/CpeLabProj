@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import MainMenu from './components/Main_menu'
 import Studentlist from './components/Studentlist'
-import Testtable from './components/Testtable'
 import Course from './components/Course'
 import Login from './components/Login'
 import Table from './components/Table';
@@ -21,24 +20,18 @@ class App extends Component {
   }
 
   componentWillMount() {
-      this.callAPI();
+      //this.callAPI();
   }
 
   render(){
     return (
     <Router>
       <div className="App">
-      <Route exact path="/" render={ props => (
-          <div>
-            <Login></Login>
-          </div>
-        )} />
-
-
+        <Route exact path="/" component={Login} />
         <Route path="/mainmenu" component={MainMenu} />
         <Route path="/Studentlist" component={Studentlist} />
-        <Route path="/Testtable" component={Table}/>     
-        <Route path="/Course" component={Course}/> 
+        <Route path="/Testtable" component={Table}/>
+        <Route path="/Course" component={Course}/>
         <Route path='/Login' component={Login}/>
       </div>
     </Router>

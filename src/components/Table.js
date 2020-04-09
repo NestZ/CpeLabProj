@@ -1,22 +1,41 @@
 import React , { Component } from 'react';
 
 export default class Table extends Component{
-
+    
     state = {
         isLoading: true,
         users: [],
         error: null
     }
+    
+    
+    fetchUsers() {
+        fetch('/admin/students', {method : 'Get'
+        })
+        .then(response => response.json())
+        .then(data =>
+            this.setState({
+                users: data,
+                isLoading: false,
+            })
+            )
+            // Catch any errors we hit and update the app
+            .catch(error => this.setState({ error, isLoading: false }));
+        }
+        
+        componentDidMount() {
+            this.fetchUsers();
+        }
 
-    render(){
-        return(
+        render(){
+            return(
            <div>
                 <div><h3>Student List</h3></div>
 
-                {error ? <p>{error.mesage}</p> : null}}
+                {this.state.error ? <p>{this.state.error.mesage}</p> : null}
 
-                {!isLoading ? (
-                    users.map(user => {
+                {!this.state.isLoading ? (
+                    this.state.users.map (user => {
                         const { name, email} = user;
                         return(
                         
@@ -25,25 +44,17 @@ export default class Table extends Component{
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        {/* <th>Student ID</th> */}
                                     </tr>
                                 </thead>
 
-                                <tbody id={name}>
+                                <tbody id={this.name}>
                                     <td>{name}</td>
                                     <td>{email}</td>
                                 </tbody>
                             </table>
                         
                         );
-        })
-      // If there is a delay in data, let's let the user know it's loading
-      ) : (
-        <h3>Loading...</h3>
-      )}
-                        )
-                    })
-                )
+        })) : (<h3>Loading...</h3>)}
            </div>
         )
     }

@@ -1,8 +1,8 @@
-import React from 'react'
+import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default class MainMenu extends Component{
+export default class MainMenu extends Component  {
   render(){
     return (
     <div className="container mt-5">
