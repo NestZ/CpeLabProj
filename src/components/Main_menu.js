@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 
-export default function MainMenu() {
+export default class MainMenu extends Component{
+  render(){
     return (
     <div className="container mt-5">
             <h5 className="card-title">Option</h5>
@@ -32,4 +33,5 @@ export default function MainMenu() {
               
     </div>  
     )
+  }
 }
