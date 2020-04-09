@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class MainMenu extends Component {
+
   logout = (event) => {
     event.preventDefault();
     fetch('/logout', {
       method : 'POST',
-      body : JSON.stringify(this.state),
       headers : {
-        'Content-Type' : 'application/json'
+        'Authorization' : 'Bearer ' + localStorage.getItem('token')
       }
     })
-    .then(async res => {
-        if(res.status === 200) {
-            this.props.history.push('/mainmenu');
-            const token = await res.json().then(token => token.token);
-            localStorage.setItem('token', token);
-            this.setState({isAuth : true});
+    .then(res => {
+        if(res.status === 201) {
+          localStorage.clear();
+          this.props.history.push('/');
         }
         else{
             const error = new Error(res.error);
@@ -25,11 +23,12 @@ export default class MainMenu extends Component {
     })
     .catch(err => {
         console.error(err);
-        alert('Error logging in please try again');
+        alert('Error logging out please try again');
     });
   }
 
   render(){
+    // if(!localStorage.getItem('token'))return (<Redirect to='/'></Redirect>);
     return (
     <div className="container mt-5">
       <h5 className="card-title">Option</h5>
