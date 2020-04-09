@@ -1,8 +1,7 @@
 import React , { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import MainMenu from './Main_menu';
+import 'bulma/css/bulma.css'
 
-export default class Login extends Component{
+class Login extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -12,10 +11,10 @@ export default class Login extends Component{
     }
 
     handleInputChange = (event) => {
-        const { value, name } = event.target;
-        this.setState({
-          [name]: value
-        });
+      const { value, name } = event.target;
+      this.setState({
+        [name]: value
+      });
     }
 
     login = (event) => {
@@ -29,9 +28,9 @@ export default class Login extends Component{
         })
         .then(async res => {
             if(res.status === 200) {
-                this.props.history.push('/mainmenu');
-                const token = await res.json().then(token => token.token);
-                localStorage.setItem('token', token);
+              const token = await res.json().then(token => token.token);
+              localStorage.setItem('token', token);
+              this.props.history.push('/mainmenu');
             }
             else{
                 const error = new Error(res.error);
@@ -45,28 +44,60 @@ export default class Login extends Component{
     }
 
     render() {
-      // if(localStorage.getItem('token'))return <MainMenu />;
       return (
-        <form onSubmit={this.login}>
-          <h1>Login Below!</h1>
-          <input
-            type="text"
-            name="email"
-            placeholder="Enter email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            required
-          />
-          <input
-            type="text"
-            name="password"
-            placeholder="Enter password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            required
-          />
-          <input type="submit" value="Submit"/>
-        </form>
+        <div className="is-fullheight">
+          <section className="hero is-info is-bold">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title">
+                  Registration Office
+                </h1>
+                <h2 className="subtitle">
+                  Chiang Mai University
+                </h2>
+              </div>
+            </div>
+          </section>
+          <section className="hero has-text-centered is-medium">
+            <div className="hero-body">
+              <div className="container">
+                <div className="columns is-centered">
+                    <div className="column is-7-tablet is-6-desktop is-5-widescreen">
+                      <form className="box has-text-left">
+                        <div className="field">
+                          <label className="label">Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            className="input"
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                            required
+                          />
+                        </div>
+                        <div className="field">
+                          <label className="label">Password</label>
+                          <input
+                            type="password"
+                            name="password"
+                            className="input"
+                            value={this.state.password}
+                            onChange={this.handleInputChange}
+                            required
+                          />
+                        </div>
+                        <div className="field">
+                          <button className="button is-success" onClick={this.login}>Login</button>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       );
     }
 }
+
+export default Login;

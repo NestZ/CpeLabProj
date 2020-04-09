@@ -1,47 +1,25 @@
 import React , { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
-import MainMenu from './components/Main_menu'
+import { BrowserRouter as Router } from 'react-router-dom';
+import MainMenu from './components/MainMenu'
 import Course from './components/Course'
 import Login from './components/Login'
 import Studentlist from './components/Studentlist';
 import Drop from './components/Drop'
 import Profile from './components/Profile'
+import RequireAuth from './components/RequireAuth'
+import NotRequireAuth from './components/NotRequireAuth'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: "" };
-  }
-
-  callAPI() {
-    fetch("http://localhost:3001/")
-        .then(res => res.text())
-        .then(res => this.setState({ apiResponse: res }));
-  }
-
-  componentWillMount() {
-      //this.callAPI();
-  }
-
-  requireAuth = (nextState, replaceState) => {
-    if (!localStorage.getItem('token')){
-      console.log('kuy');
-      replaceState({ nextPathname: nextState.location.pathname }, '/');
-    }
-  }
-
   render(){
     return (
     <Router>
-      <div className="App">
-        <Route exact path="/" component={Login} />
-        <Route path="/Course" component={Course}/>
-        <Route path="/Drop" component={Drop} />
-        <Route path='/Login' component={Login}/>
-        <Route path="/me" component={Profile} />
-        <Route path="/mainmenu" component={MainMenu} onEnter={this.requireAuth} />
-        <Route path="/Studentlist" component={Studentlist} />
+      <div>
+        <NotRequireAuth exact path='/' component={Login} />
+        <RequireAuth path='/mainmenu' component={MainMenu} />
+        <RequireAuth path="/course" component={Course} />
+        <RequireAuth path="/drop" component={Drop} />
+        <RequireAuth path="/me" component={Profile} />
+        <RequireAuth path="/studentlist" component={Studentlist} />
       </div>
     </Router>
     );
