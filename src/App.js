@@ -6,6 +6,7 @@ import Studentlist from './components/Studentlist'
 import Testtable from './components/Testtable'
 import Course from './components/Course'
 import Login from './components/Login'
+import Profile from './components/Profile'
 
 class App extends Component {
   constructor(props) {
@@ -28,11 +29,11 @@ class App extends Component {
     <Router>
       <div className="App">
         <Route exact path="/" component={Login} />
+        <Route path="/me" component={Profile} />
         <Route path="/mainmenu" component={MainMenu} />
         <Route path="/Studentlist" component={Studentlist} />
         <Route path="/Testtable" component={Testtable}/>
         <Route path="/Course" component={Course}/>
-        <Route path='/Login' component={Login}/>
       </div>
     </Router>
     );

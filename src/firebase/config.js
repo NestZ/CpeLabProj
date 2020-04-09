@@ -8,5 +8,5 @@ const config = {
     appId: process.env.REACT_APP_APPID,
     measurementId: process.env.REACT_APP_MEASUREMENTID
 }
-  
+
 export default config;
