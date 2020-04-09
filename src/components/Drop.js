@@ -1,25 +1,46 @@
 import React , { Component } from 'react';
 import 'bulma/css/bulma.css'
 
-export default class Studentlist extends Component{
+export default class Drop extends Component{
     
     state = {
         isLoading: true,
         users: [],
         error: null
     }
-    
+
+    Drop = (Id) => {
+       
+        console.log("kuy"+ Id)
+        console.log("kuy"+ JSON.stringify({id : this.state.users[Id].id }) )
+        fetch('/drop',{
+            method : 'DELETE',
+            body : JSON.stringify({id : this.state.users[Id].id }),
+            headers : {
+                'Content-Type' : 'application/json',
+                'Authorization' : 'Bearer ' + localStorage.getItem('token')
+            },
+        })
+        .then(response => {console.log(response.status)})
+        
+    }
     
     fetchUsers() {
-        fetch('/admin/students', {method : 'Get'
+        fetch('/me/course', {
+            method : 'Get',
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('token')
+            }
         })
         .then(response => response.json())
-        .then(data =>
+        .then(data =>{
             this.setState({
-                users: data,
+                users: data.courses,
                 isLoading: false,
-            })
-            )
+            });
+        })
+
+            
             // Catch any errors we hit and update the app
             .catch(error => this.setState({ error, isLoading: false }));
         }
@@ -36,6 +57,7 @@ export default class Studentlist extends Component{
                                     <thead>
                                         <tr>
                                             <th>Courses</th>
+                                            <th>Name</th>
                                             <th>Creadit</th>
                                             <th>Drop</th>
                                         </tr>
@@ -44,15 +66,16 @@ export default class Studentlist extends Component{
                     {this.state.error ? <p>{this.state.error.mesage}</p> : null}
 
                     {!this.state.isLoading ? (
-                        this.state.users.map (user => {
-                            const { courses, email} = user
-                            console.log(courses[0].id)
+                        this.state.users.map ((user,Id) => {
+                            // console.log("kuy"+ Id)
                             return(
-                                <tbody>
-                                        <td>{courses[0].id}</td>
-                                        <td></td>
-                                        <td><button>Drop</button></td>
-                                    </tbody>
+                                <tr>
+                                    
+                                        <td>{user.id}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.credits}</td>
+                                        <td><button key={user.id} onClick={() => this.Drop(Id)}>Drop</button></td>
+                                    </tr>
                             
                             );
                         })) : (<h3>Loading...</h3>)}
