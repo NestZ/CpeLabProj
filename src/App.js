@@ -24,13 +24,20 @@ class App extends Component {
       //this.callAPI();
   }
 
+  requireAuth = (nextState, replaceState) => {
+    if (!localStorage.getItem('token')){
+      console.log('kuy');
+      replaceState({ nextPathname: nextState.location.pathname }, '/');
+    }
+  }
+
   render(){
     return (
     <Router>
       <div className="App">
         <Route exact path="/" component={Login} />
         <Route path="/me" component={Profile} />
-        <Route path="/mainmenu" component={MainMenu} />
+        <Route path="/mainmenu" component={MainMenu} onEnter={this.requireAuth} />
         <Route path="/Studentlist" component={Studentlist} />
         <Route path="/Testtable" component={Testtable}/>
         <Route path="/Course" component={Course}/>

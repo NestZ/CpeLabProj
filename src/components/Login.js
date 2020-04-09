@@ -1,15 +1,13 @@
 import React , { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import MainMenu from './Main_menu';
 
 export default class Login extends Component{
     constructor(props) {
         super(props)
         this.state = {
-          form : {
-            email : '',
-            password: ''
-          },
-          isAuth : false
+          email : '',
+          password: ''
         };
     }
 
@@ -34,7 +32,6 @@ export default class Login extends Component{
                 this.props.history.push('/mainmenu');
                 const token = await res.json().then(token => token.token);
                 localStorage.setItem('token', token);
-                this.setState({isAuth : true});
             }
             else{
                 const error = new Error(res.error);
@@ -48,7 +45,7 @@ export default class Login extends Component{
     }
 
     render() {
-      if(!this.state.isAuth)return (<Redirect to='/mainmenu'></Redirect>);
+      // if(localStorage.getItem('token'))return <MainMenu />;
       return (
         <form onSubmit={this.login}>
           <h1>Login Below!</h1>
