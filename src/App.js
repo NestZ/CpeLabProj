@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React , { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import MainMenu from './components/Main_menu'
 import Studentlist from './components/Studentlist'
 import Testtable from './components/Testtable'
 import Course from './components/Course'
 import Login from './components/Login'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +25,7 @@ class App extends Component {
 
   render(){
     return (
+    <Router>
       <div className="App">
       <Route exact path="/" render={ props => (
           <div>
@@ -37,6 +40,7 @@ class App extends Component {
         <Route path="/Course" component={Course}/> 
         <Route path='/Login' component={Login}/>
       </div>
+    </Router>
     );
   }
 }
