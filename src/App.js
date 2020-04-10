@@ -21,7 +21,7 @@ class App extends Component {
         <RequireAuth path="/drop" component={Drop} />
         <RequireAuth path="/me" component={Profile} />
         <RequireAuth path="/studentlist" component={Studentlist} />
-        <Route path='/Register' component={Register}/>
+        <NotRequireAuth path='/Register' component={Register}/>
       </div>
     </Router>
     );
