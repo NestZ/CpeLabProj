@@ -51,7 +51,7 @@ export default class Course extends Component  {
       body:JSON.stringify(coursedata[Id]),
       headers :{
         'Content-Type' : 'application/json',
-        'Authorization': 'Bearer'+localStorage.getItem('token')
+        'Authorization' : 'Bearer ' + localStorage.getItem('token')
       },
     })
     .then(response=>{
@@ -69,7 +69,7 @@ export default class Course extends Component  {
     fetch('/me/course', {
         method : 'Get',
         headers : {
-            'Authorization' : 'Bearer ' + localStorage.getItem('token')
+          'Authorization' : 'Bearer ' + localStorage.getItem('token')
         }
     })
     .then(response => response.json())
