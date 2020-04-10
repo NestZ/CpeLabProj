@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MainMenu from './components/MainMenu'
 import Course from './components/Course'
 import Login from './components/Login'
@@ -9,6 +9,7 @@ import Drop from './components/Drop'
 import Profile from './components/Profile'
 import RequireAuth from './components/RequireAuth'
 import NotRequireAuth from './components/NotRequireAuth'
+import Credit from './components/Credit';
 
 class App extends Component {
   render(){
@@ -22,6 +23,7 @@ class App extends Component {
         <RequireAuth path="/me" component={Profile} />
         <RequireAuth path="/studentlist" component={Studentlist} />
         <NotRequireAuth path='/Register' component={Register}/>
+        <Route path="/Credit" component={Credit}></Route>
       </div>
     </Router>
     );
