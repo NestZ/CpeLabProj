@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
         next();
     }
     catch(error){
-        res.status(401).json({error : "Authorization failed!"});
+        res.status(401).json({error : error.message});
     }
 }
 

@@ -81,16 +81,22 @@ router.get('/me', Auth, (req, res, next) => {
 
 router.post('/reg', Auth, async (req, res, next) => {
     const student = req.student;
-    const courseId = req.body.id;
+    const {id, name, credits, day, time} = req.body;
     try{
         const currStudent = await Student.findById(student.id);
         const allCourse = currStudent.courses;
         let dup = false;
         allCourse.forEach(item => {
-            if(item.id === courseId)dup = true;
+            if(item.id === id)dup = true;
         });
         if(dup)return res.status(500).json({error : "course duplicate!"});
-        allCourse.push({id : courseId});
+        allCourse.push({
+            id : id,
+            name : name,
+            credits : credits,
+            day : day,
+            time : time
+        });
         const newCourse = {
             courses : allCourse
         }
