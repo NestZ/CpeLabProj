@@ -16,6 +16,6 @@ exp.use(Router);
 const PORT = process.env.PORT;
 const HOSTNAME = 'localhost';
 
-exp.listen(PORT, HOSTNAME, () => {
+exp.listen(PORT || 3001, HOSTNAME, () => {
     console.log('server is running at port : ' + PORT);
 });
