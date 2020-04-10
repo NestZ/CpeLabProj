@@ -13,7 +13,7 @@ exp.use(bp.urlencoded({extended : true}));
 exp.use(express.static(path.join(__dirname, 'build')));
 exp.use(Router);
 
-const PORT = 3001;
+const PORT = process.env.PORT;
 const HOSTNAME = 'localhost';
 
 exp.listen(PORT, HOSTNAME, () => {
