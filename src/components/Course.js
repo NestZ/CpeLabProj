@@ -18,14 +18,29 @@ export default class Course extends Component  {
         'Authorization': 'Bearer' +localStorage.getItem('token')
       },
     })
-    .then(response=>{console.log(response.status)})
+    .then(response=>{
+      if(response.status==200){
+        coursedata[Id].splice(0,6)
+      }
+    })
   }
  render(){
     return (
+      <div className="is-fullheight">
+          <section className="hero is-info is-bold">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title">
+                  Registration Office
+                </h1>
+                <h2 className="subtitle">
+                  Chiang Mai University
+                </h2>
+              </div>
+            </div>
+          </section>
     <div class="contianer">
-      <div class="table__wrapper">
-        <div class="card-header is-size-1"><h1 class="card-header-title is-size-1" >Course</h1></div>
-             
+        <div className="column is-three-fifths is-offset-one-fifth">
         <table class="table is-striped is-narrow is-hoverable is-fullwidth pricing__table is-fullwidth" id="dataTable">
                                 <thead>
                                     <tr>
@@ -47,24 +62,15 @@ export default class Course extends Component  {
                                     <td>{day}</td>
                                     <td>{time}</td>
                                     <td>{credits}</td>
-                                    <td><button class="btn btn-primary" type="button" key={coursedata.id} onClick = {()=>this.Register(Id)}>Register</button></td>
+                                    <td><button class="button is-success" type="button" key={coursedata.id} onClick = {()=>this.Register(Id)}>Register</button></td>
                                 </tbody>
                             
                         );
         }
         )
      }
-                <tfoot>
-                    <tr>
-                     <th>CourseID</th>
-                     <th>Title</th>
-                     <th>Day</th>                               
-                     <th>Time</th>
-                     <th>Credit</th>
-                     <th>Register</th>
-                    </tr>
-                </tfoot>
         </table>
+        </div>
       </div>
       </div>
     )
