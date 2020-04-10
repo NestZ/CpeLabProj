@@ -1,12 +1,16 @@
 import React , { Component } from 'react';
+import Schedule from './Schedule'
 
-export default class Profile extends Component {
-    constructor(props) {
+class Profile extends Component{
+    constructor(props){
         super(props);
-        this.state = { apiResponse: {} };
+        this.state = {
+            profile : {},
+            isLoading : true
+        };
     }
 
-    callAPI() {
+    fetchProfile(){
         fetch('/me', {
             method : 'GET',
             headers : {
@@ -15,20 +19,28 @@ export default class Profile extends Component {
         })
         .then(res => res.json())
         .then(res => {
-            this.setState({ apiResponse: res });
-            console.log(this.state.apiResponse.name);
+            this.setState({
+                profile : res,
+                isLoading : false
+            });
         });
     }
 
-    componentWillMount() {
-        this.callAPI();
+    componentWillMount(){
+        this.fetchProfile();
     }
 
     render(){
         return (
           <div>
-            <p>{this.state.apiResponse.name}</p>
+            <p>{this.state.profile.email}</p>
+            {
+                !this.state.isLoading ?
+                (<Schedule schedule={this.state.profile.courses}/>) : (<h3>Loading...</h3>)
+            }
           </div>
         );
     }
 }
+
+export default Profile;
