@@ -4,8 +4,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Student = require('../models/studentModel');
 const Auth = require('../middleware/auth');
-const conStr = process.env.REACT_APP_DATABASE_URL.replace('<password>', process.env.REACT_APP_DATABASE_PWD)
-                                        .replace('<database>', process.env.REACT_APP_DATABASE_NAME);
+const conStr = 'mongodb+srv://NestZ:<password>@cluster0-y7jgs.gcp.mongodb.net/<database>?retryWrites=true&w=majority'.replace('<password>', 'NestZ')
+                                        .replace('<database>', 'reg-cmu');
 
 mongoose.connect(conStr, {
     useNewUrlParser : true,

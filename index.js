@@ -13,8 +13,8 @@ exp.use(bp.urlencoded({extended : true}));
 exp.use(express.static(path.join(__dirname, 'build')));
 exp.use(Router);
 
-const PORT = process.env.REACT_APP_PORT;
-const HOSTNAME = process.env.REACT_APP_HOST_NAME;
+const PORT = 3001;
+const HOSTNAME = 'localhost';
 
 exp.listen(PORT, HOSTNAME, () => {
     console.log('server is running at port : ' + PORT);

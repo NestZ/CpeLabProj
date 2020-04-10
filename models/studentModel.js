@@ -48,7 +48,7 @@ studentSchema.methods.generateAuthToken = async function(){
         email : student.email
     };
 
-    const token = jwt.sign(payload, process.env.REACT_APP_TOKEN_KEY, {expiresIn : '2h', issuer : 'CMU'});
+    const token = jwt.sign(payload, 'reg-cmu', {expiresIn : '2h', issuer : 'CMU'});
     student.tokens = student.tokens.concat({token});
     await student.save();
     return token;
