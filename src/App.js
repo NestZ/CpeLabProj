@@ -15,13 +15,13 @@ class App extends Component {
     return (
     <Router>
       <div>
-        <NotRequireAuth exact path='/' component={Login} />
+        <NotRequireAuth exact path='/' component={Course} />
         <RequireAuth path='/mainmenu' component={MainMenu} />
         <RequireAuth path="/course" component={Course} />
         <RequireAuth path="/drop" component={Drop} />
         <RequireAuth path="/me" component={Profile} />
         <RequireAuth path="/studentlist" component={Studentlist} />
-        <Route path='/Register' component={Register}/>
+        <RequireAuth path='/Register' component={Register}/>
       </div>
     </Router>
     );
