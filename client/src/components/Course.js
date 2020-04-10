@@ -50,6 +50,7 @@ export default class Course extends Component  {
 
   Register = (Id) =>{
     if(this.checktimed(Id)){
+    console.log()
     this.aler1()
     fetch('/reg',{
       method :'POST',

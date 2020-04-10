@@ -53,7 +53,12 @@ class MainMenu extends Component {
                   </div>
                   <div className="field">
                     <Link to="/course">
-                      <button className="button is-large is-info is-fullwidth">Register or Drop</button>
+                      <button className="button is-large is-info is-fullwidth">Register</button>
+                    </Link>
+                  </div>
+                  <div className="field">
+                    <Link to="/drop">
+                      <button className="button is-large is-info is-fullwidth">Drop</button>
                     </Link>
                   </div>
                   <button className="button is-large is-danger is-fullwidth" onClick={this.logout}>Logout</button>

@@ -21,8 +21,12 @@ export default class Drop extends Component{
                 'Authorization' : 'Bearer ' + sessionStorage.token
             },
         })
-        .then(response => {console.log(response.status)})
-        
+        .then(response => {
+            if (response.status === 200) {
+                delete this.state.users[Id]
+                this.setState({users:this.state.users})
+            }
+        })
     }
     
     fetchUsers() {
@@ -51,35 +55,54 @@ export default class Drop extends Component{
         
         render(){
             return(
-                <div class="container is-fullhd">
-                    <div><h3 class="title">Courses List</h3></div>
-                                <table class="table is-fullwidth table is-responsive">
+                <div className="is-fullheight">
+                    <section className="hero is-info is-bold">
+                        <div className="hero-body">
+                            <div className="container">
+                                <h1 className="title">
+                                    Drop
+                                </h1>
+                                <h2 className="subtitle">
+                                    Chiang Mai University
+                                </h2>
+                            </div>
+                        </div>
+                    </section>
+                    <div className="container">
+                            <div className="column is-three-fifths is-offset-one-fifth">
+                                <table class="table  is-striped is-narrow is-hoverable is-fullwidth">
                                     <thead>
                                         <tr>
-                                            <th>Courses</th>
-                                            <th>Name</th>
-                                            <th>Creadit</th>
+                                            <th>CourseID</th>
+                                            <th>Title</th>
+                                            <th>Day</th>
+                                            <th>Time</th>
+                                            <th>Credit</th>
                                             <th>Drop</th>
                                         </tr>
                                     </thead>
 
-                    {!this.state.isLoading ? (
-                        this.state.users.map ((user,Id) => {
-                            console.log("kuy"+ Id)
-                            return(
-                                <tr>
-                                    
-                                        <td>{user.id}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.credits}</td>
-                                        <td><button key={user.id} onClick={() => this.Drop(Id)}>Drop</button></td>
-                                    </tr>
-                            
-                            );
-                        })) : (<h3>Loading...</h3>)}
-                        </table>
-           </div>
-           
+                                    {!this.state.isLoading ? (
+                                        this.state.users.map ((user,Id) => {
+                                            console.log("kuy"+ Id)
+                                            return(
+                                                <tr>
+                                                    
+                                                        <td>{user.id}</td>
+                                                        <td>{user.name}</td>
+                                                        <td>{user.day}</td>
+                                                        <td>{user.time}</td>
+                                                        <td>{user.credits}</td>
+                                                        <td><button class="button is-danger" key={user.id} onClick={() => this.Drop(Id)}>Drop</button></td>
+                                                    </tr>
+                                            
+                                            );
+                                        })) : (<h3>Loading...</h3>)}
+                                </table>
+
+                            </div>
+                    </div>
+                </div>
         )
     }
 }
