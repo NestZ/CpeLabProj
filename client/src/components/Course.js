@@ -45,13 +45,14 @@ export default class Course extends Component  {
   }
   Register = (Id) =>{
     if(this.checktimed(Id)){
+    console.log()
     this.aler1()
     fetch('/reg',{
       method :'POST',
       body:JSON.stringify(coursedata[Id]),
       headers :{
         'Content-Type' : 'application/json',
-        'Authorization': 'Bearer' + localStorage.getItem('token')
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
       },
     })
     .then(response=>{

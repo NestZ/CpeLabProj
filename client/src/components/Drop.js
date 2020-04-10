@@ -21,6 +21,12 @@ export default class Drop extends Component{
                 'Authorization' : 'Bearer ' + localStorage.getItem('token')
             },
         })
+        .then(response => {
+            if (response.status === 200) {
+                delete this.state.users[Id]
+                this.setState({users:this.state.users})
+            }
+        })
     }
     
     fetchUsers() {
