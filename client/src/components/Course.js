@@ -9,6 +9,9 @@ export default class Course extends Component  {
     error: null,
     coursedata
   }
+  refreshPage() {
+    window.location.reload(false);
+  }
  aler(){
   alert("Can not register!!!!");
  }
@@ -54,6 +57,7 @@ export default class Course extends Component  {
         'Authorization' : 'Bearer ' + localStorage.getItem('token')
       },
     })
+    this.refreshPage()
     .then(response=>{
       if(response.status===200 && this.checktimed(Id)){
         delete this.state.coursedata[Id]
