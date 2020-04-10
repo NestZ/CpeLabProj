@@ -1,4 +1,5 @@
 import React , { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import 'bulma/css/bulma.css'
 
 class Login extends Component{
@@ -29,7 +30,7 @@ class Login extends Component{
         .then(async res => {
             if(res.status === 200) {
               const token = await res.json().then(token => token.token);
-              localStorage.setItem('token', token);
+              sessionStorage.token = token;
               this.props.history.push('/mainmenu');
             }
             else{
@@ -86,8 +87,10 @@ class Login extends Component{
                             required
                           />
                         </div>
-                        <div className="field">
+                        <div className="buttons">
                           <button className="button is-success" onClick={this.login}>Login</button>
+                          <Link to="/register"><button className="button is-info">Sign Up</button></Link>
+                          <Link to="/"><button className="button is-warning">Credits</button></Link>
                         </div>
                       </form>
                   </div>
