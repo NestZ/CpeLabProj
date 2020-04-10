@@ -18,7 +18,7 @@ export default class Drop extends Component{
             body : JSON.stringify({id : this.state.users[Id].id }),
             headers : {
                 'Content-Type' : 'application/json',
-                'Authorization' : 'Bearer ' + localStorage.getItem('token')
+                'Authorization' : 'Bearer ' + sessionStorage.token
             },
         })
         .then(response => {
@@ -33,7 +33,7 @@ export default class Drop extends Component{
         fetch('/me/course', {
             method : 'Get',
             headers : {
-                'Authorization' : 'Bearer ' + localStorage.getItem('token')
+                'Authorization' : 'Bearer ' + sessionStorage.token
             }
         })
         .then(response => response.json())
