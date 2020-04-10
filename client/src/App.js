@@ -8,6 +8,7 @@ import Drop from './components/Drop'
 import Profile from './components/Profile'
 import RequireAuth from './components/RequireAuth'
 import NotRequireAuth from './components/NotRequireAuth'
+import Credits from './components/Credit'
 
 class App extends Component {
   render(){
@@ -20,6 +21,7 @@ class App extends Component {
         <RequireAuth path="/drop" component={Drop} />
         <RequireAuth path="/me" component={Profile} />
         <NotRequireAuth path='/register' component={Register}/>
+        <NotRequireAuth path='/credits' component={Credits}/>
       </div>
     </Router>
     );

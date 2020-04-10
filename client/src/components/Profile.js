@@ -14,7 +14,7 @@ class Profile extends Component{
         fetch('/me', {
             method : 'GET',
             headers : {
-                'Authorization' : 'Bearer ' + sessionStorage.token
+                'Authorization' : 'Bearer ' + sessionStorage.getItem('token')
             }
         })
         .then(res => res.json())

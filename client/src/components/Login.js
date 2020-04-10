@@ -20,6 +20,7 @@ class Login extends Component{
 
     login = (event) => {
         event.preventDefault();
+        console.log(sessionStorage.getItem('token') + "kuy")
         fetch('/login', {
             method : 'POST',
             body : JSON.stringify(this.state),
@@ -30,7 +31,7 @@ class Login extends Component{
         .then(async res => {
             if(res.status === 200) {
               const token = await res.json().then(token => token.token);
-              sessionStorage.token = token;
+              sessionStorage.setItem('token', token);
               this.props.history.push('/mainmenu');
             }
             else{
@@ -45,6 +46,7 @@ class Login extends Component{
     }
 
     render() {
+     
       return (
         <div className="is-fullheight">
           <section className="hero is-info is-bold">
@@ -90,7 +92,7 @@ class Login extends Component{
                         <div className="buttons">
                           <button className="button is-success" onClick={this.login}>Login</button>
                           <Link to="/register"><button className="button is-info">Sign Up</button></Link>
-                          <Link to="/"><button className="button is-warning">Credits</button></Link>
+                          <Link to="/credits"><button className="button is-warning">Credits</button></Link>
                         </div>
                       </form>
                   </div>

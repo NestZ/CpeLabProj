@@ -7,7 +7,7 @@ class MainMenu extends Component {
     fetch('/logout', {
       method : 'POST',
       headers : {
-        'Authorization' : 'Bearer ' + sessionStorage.token
+        'Authorization' : 'Bearer ' + sessionStorage.getItem('token')
       }
     })
     .then(res => {

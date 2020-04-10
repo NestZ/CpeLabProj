@@ -26,7 +26,7 @@ onSubmit = (event) =>{
       })
       .then(res => {
         if (res.status === 201) {
-          this.props.history.push('/Login');
+          this.props.history.push('/');
           alert('Finish');
         } else {
           const error = new Error(res.status);

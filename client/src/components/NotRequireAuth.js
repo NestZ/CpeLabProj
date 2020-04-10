@@ -2,7 +2,7 @@ import { Route, Redirect } from 'react-router-dom';
 import React from 'react';
 
 const NotRequireAuth = ({component: Component, ...rest}) => (
-    <Route {...rest} render={(props) => !sessionStorage.token ?
+    <Route {...rest} render={(props) => sessionStorage.getItem('token') == null ?
     (<Component {...props} />) : (<Redirect to={{pathname : '/mainmenu', state : { from : props.location }}}/>)} />
 );
 
