@@ -130,7 +130,7 @@ router.delete('/drop', Auth, async (req, res, next) => {
         const allCourse = currStudent.courses;
         const newCourse = allCourse.filter(item => {
             return item.id !== courseId;
-        });
+        });aa
         const result = await Student.findByIdAndUpdate(student.id, {courses : newCourse}, {new : true});
         if(!result)return res.status(404).json({error : "drop failed!"});
         res.status(200).json({msg : "drop success!"});

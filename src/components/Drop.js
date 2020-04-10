@@ -63,11 +63,9 @@ export default class Drop extends Component{
                                         </tr>
                                     </thead>
 
-                    {this.state.error ? <p>{this.state.error.mesage}</p> : null}
-
                     {!this.state.isLoading ? (
                         this.state.users.map ((user,Id) => {
-                            // console.log("kuy"+ Id)
+                            console.log("kuy"+ Id)
                             return(
                                 <tr>
                                     
