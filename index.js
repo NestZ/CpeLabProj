@@ -14,7 +14,7 @@ exp.use(express.static(path.join(__dirname, 'build')));
 exp.use(Router);
 
 const PORT = process.env.PORT;
-const HOSTNAME = 'localhost';
+const HOSTNAME = '0.0.0.0';
 
 exp.listen(PORT || 3001, HOSTNAME, () => {
     console.log('server is running at port : ' + PORT);
