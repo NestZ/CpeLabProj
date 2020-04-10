@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import MainMenu from './components/MainMenu'
 import Course from './components/Course'
 import Login from './components/Login'
+import Register from './components/Register'
 import Studentlist from './components/Studentlist';
 import Drop from './components/Drop'
 import Profile from './components/Profile'
@@ -20,6 +21,7 @@ class App extends Component {
         <RequireAuth path="/drop" component={Drop} />
         <RequireAuth path="/me" component={Profile} />
         <RequireAuth path="/studentlist" component={Studentlist} />
+        <Route path='/Register' component={Register}/>
       </div>
     </Router>
     );
