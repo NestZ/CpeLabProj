@@ -1,72 +1,72 @@
 const course = [{
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
+    name:"Algorithm",
     day:"Mo-Th",
     credits:"3",
-    time:"8.30-11.00"
+    time:"9.30-11.00"
 },
 {
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
+    name:"Oop",
     day:"Mo-Th",
     credits:"3",
-    time:"8.30-11.00"
+    time:"11.00-12.30"
 },
 {
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
+    name:"Functional Programming",
     day:"Mo-Th",
     credits:"3",
-    time:"8.30-11.00"
+    time:"14.30-16.00"
 },
 {
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
-    day:"Mo-Th",
+    name:"Advance Algorithm",
+    day:"We",
     credits:"3",
-    time:"8.30-11.00"
+    time:"9.00-12.00"
 },
 {
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
-    day:"Mo-Th",
+    name:"Data communication",
+    day:"Tu-Fr",
     credits:"3",
-    time:"8.30-11.00"
+    time:"9.30-11.00"
 },
 {
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
-    day:"Mo-Th",
+    name:"Microprocessing",
+    day:"Tu-Fr",
     credits:"3",
-    time:"8.30-11.00"
+    time:"9.30-11.00"
 },
 {
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
-    day:"Mo-Th",
+    name:"Medical in everyday life",
+    day:"We",
     credits:"3",
-    time:"8.30-11.00"
+    time:"13.00-16.00"
 },
 {
     id:"261xxxxx",
-    name:"xxxxxxxxxxxxx",
+    name:"Discuit Math",
     day:"Mo-Th",
     credits:"3",
-    time:"8.30-11.00"
+    time:"9.30-11.00"
 },
 {
     id:"2612222x",
     name:"xxxxxxxxxxxxx",
-    day:"Mo-Th",
+    day:"We",
     credits:"3",
-    time:"8.30-11.00"
+    time:"9.00-12.00"
 },
 {
     id:"261xxxxx",
     name:"xxxxxxxxxxxxx",
-    day:"Mo-Th",
+    day:"Tu-Fr",
     credits:"3",
-    time:"8.30-11.00"
+    time:"14.30-16.00"
 },
 ]
 export default course
