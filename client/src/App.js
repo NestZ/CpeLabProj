@@ -20,8 +20,7 @@ class App extends Component {
         <RequireAuth path="/course" component={Course} />
         <RequireAuth path="/drop" component={Drop} />
         <RequireAuth path="/me" component={Profile} />
-        <RequireAuth path="/studentlist" component={Studentlist} />
-        <NotRequireAuth path='/Register' component={Register}/>
+        <NotRequireAuth path='/register' component={Register}/>
       </div>
     </Router>
     );

@@ -7,12 +7,12 @@ class MainMenu extends Component {
     fetch('/logout', {
       method : 'POST',
       headers : {
-        'Authorization' : 'Bearer ' + localStorage.getItem('token')
+        'Authorization' : 'Bearer ' + sessionStorage.token
       }
     })
     .then(res => {
         if(res.status === 201) {
-          localStorage.clear();
+          sessionStorage.clear();
           this.props.history.push('/');
         }
         else{
