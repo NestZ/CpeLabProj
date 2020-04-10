@@ -55,15 +55,15 @@ const course = [{
     time:"9.30-11.00"
 },
 {
+    name:"CoolAlgorithm",
     id:"9",
-    name:"xxxxxxxxxxxxx",
     day:"We",
     credits:"3",
     time:"9.00-12.00"
 },
 {
     id:"10",
-    name:"xxxxxxxxxxxxx",
+    name:"Eng3",
     day:"Tu-Fr",
     credits:"3",
     time:"14.30-16.00"
