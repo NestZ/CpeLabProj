@@ -8,6 +8,22 @@ class Schedule extends Component{
         }
     }
 
+    renderTableData(){
+        return(
+            this.state.schedule.map((course, i) => {
+                return(
+                    <tr key={i}>
+                        <td>{course.id}</td>
+                        <td>{course.name}</td>
+                        <td>{course.credits}</td>
+                        <td>{course.day}</td>
+                        <td>{course.time}</td>
+                    </tr>
+                );
+            })
+        );
+    }
+
     render(){
         return(
             <div>
@@ -22,17 +38,7 @@ class Schedule extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                    {this.state.schedule.map((course, i) => {
-                        return(
-                            <tr key={i}>
-                                <td>{course.id}</td>
-                                <td>{course.name}</td>
-                                <td>{course.credit}</td>
-                                <td>{course.day}</td>
-                                <td>{course.time}</td>
-                            </tr>
-                        );
-                    })}
+                        {this.renderTableData()}
                     </tbody>
                 </table>
             </div>
