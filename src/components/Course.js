@@ -8,7 +8,13 @@ export default class Course extends Component  {
     users: [],
     error: null,
     coursedata
-  } 
+  }
+ aler(){
+  alert("Can not register!!!!");
+ }
+ aler1(){
+  alert("Register Succes!!!!");
+ }
  checktimed(Id){
    var i =0
   if(this.state.users === null)
@@ -38,15 +44,14 @@ export default class Course extends Component  {
     this.setState({coursedata:this.state.coursedata})
   }
   Register = (Id) =>{
-    console.log("Hee"+Id)
-    console.log("Hee"+JSON.stringify(coursedata[Id]))
     if(this.checktimed(Id)){
+    this.aler1()
     fetch('/reg',{
       method :'POST',
       body:JSON.stringify(coursedata[Id]),
       headers :{
         'Content-Type' : 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkwMzI1ZWNjYjY0OGY0YmMwNTc2MDQiLCJlbWFpbCI6ImJpbGx5QG5lc3QuY29tIiwiaWF0IjoxNTg2NTA4NDA0LCJleHAiOjE1ODY1MTU2MDQsImlzcyI6IkNNVSJ9.Ugf4-GHGw0P-3EDbe6viiYC-Vp-15udUNVy3GoHPGRo' //+localStorage.getItem('token')
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkwMzI1ZWNjYjY0OGY0YmMwNTc2MDQiLCJlbWFpbCI6ImJpbGx5QG5lc3QuY29tIiwiaWF0IjoxNTg2NTA4NDA0LCJleHAiOjE1ODY1MTU2MDQsImlzcyI6IkNNVSJ9.Ugf4-GHGw0P-3EDbe6viiYC-Vp-15udUNVy3GoHPGRo'//+localStorage.getItem('token')
       },
     })
     .then(response=>{
@@ -55,6 +60,9 @@ export default class Course extends Component  {
         this.setState({coursedata:this.state.coursedata})
       }
     })
+  }
+  else{
+    this.aler()
   }
 }
   fetchUsers() {
