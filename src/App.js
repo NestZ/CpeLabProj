@@ -20,7 +20,7 @@ class App extends Component {
         .then(res => this.setState({ apiResponse: res }));
   }
 
-  componentWillMount() {
+  component0WillMount() {
       //this.callAPI();
   }
 

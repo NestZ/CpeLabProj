@@ -1,7 +1,25 @@
- import React , { Component } from 'react';
+import React , { Component } from 'react';
 import 'bulma/css/bulma.css'
 import coursedata from './coursetabledata';
-export default class Course extends Component  {    
+export default class Course extends Component  {
+  state = {
+    isLoading: true,
+    users:[],
+    error:null
+  }
+  Register = (Id) =>{
+    console.log("Hee"+Id)
+    console.log("Hee"+JSON.stringify(coursedata[Id]))
+    fetch('/reg',{
+      method :'POST',
+      body:JSON.stringify(coursedata[Id]),
+      headers :{
+        'Content-Type' : 'application/json',
+        'Authorization': 'Bearer' +localStorage.getItem('token')
+      },
+    })
+    .then(response=>{console.log(response.status)})
+  }
  render(){
     return (
     <div class="contianer">
@@ -19,17 +37,17 @@ export default class Course extends Component  {
                                         <th>Register</th>
                                     </tr>
                                 </thead>
-        {coursedata.map(user => {
-                        const {CourseID,Title,Day,Credit} = user;
+        {coursedata.map((user,Id) => {
+                        const {id,name,credits,time,day} = user;
                         return(
                         
                                 <tbody id={this.name}>
-                                    <td>{CourseID}</td>
-                                    <td>{Title}</td>
-                                    <td>{Day[0].date}-{Day[1].date}</td>
-                                    <td>{Day[0].stime}-{Day[0].etime}</td>
-                                    <td>{Credit}</td>
-                                    <td><button class="btn btn-primary" type="button" >Register</button></td>
+                                    <td>{id}</td>
+                                    <td>{name}</td>
+                                    <td>{day}</td>
+                                    <td>{time}</td>
+                                    <td>{credits}</td>
+                                    <td><button class="btn btn-primary" type="button" key={coursedata.id} onClick = {()=>this.Register(Id)}>Register</button></td>
                                 </tbody>
                             
                         );

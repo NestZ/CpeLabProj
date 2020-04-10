@@ -13,7 +13,7 @@ handleInputChange = (event) => {
     this.setState({
     [name]: value
         });
-    }
+}
 onSubmit = (event) =>{
     event.preventDefault();
     fetch('/signup',{
@@ -36,7 +36,7 @@ onSubmit = (event) =>{
         console.error(err);
         alert('Error Signup in please try again');
       });
-    }
+}
 render(){
     return (
     <form onSubmit={this.onSubmit}>

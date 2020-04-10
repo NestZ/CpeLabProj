@@ -1,62 +1,72 @@
 const course = [{
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"2612222x",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 {
-    CourseID:"261xxxxx",
-    Title:"xxxxxxxxxxxxx",
-    Day:[{date : "Mo",stime : "8.30", etime : "11.00"},{date : "Th"}],
-    Credit:3
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
 },
 ]
 export default course
