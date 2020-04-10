@@ -1,0 +1,72 @@
+const course = [{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"2612222x",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+{
+    id:"261xxxxx",
+    name:"xxxxxxxxxxxxx",
+    day:"Mo-Th",
+    credits:"3",
+    time:"8.30-11.00"
+},
+]
+export default course

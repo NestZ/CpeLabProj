@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React , { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import MainMenu from './components/MainMenu'
+import Course from './components/Course'
+import Login from './components/Login'
+import Register from './components/Register'
+import Studentlist from './components/Studentlist';
+import Drop from './components/Drop'
+import Profile from './components/Profile'
+import RequireAuth from './components/RequireAuth'
+import NotRequireAuth from './components/NotRequireAuth'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render(){
+    return (
+    <Router>
+      <div>
+        <NotRequireAuth exact path='/' component={Login} />
+        <RequireAuth path='/mainmenu' component={MainMenu} />
+        <RequireAuth path="/course" component={Course} />
+        <RequireAuth path="/drop" component={Drop} />
+        <RequireAuth path="/me" component={Profile} />
+        <RequireAuth path="/studentlist" component={Studentlist} />
+        <NotRequireAuth path='/Register' component={Register}/>
+      </div>
+    </Router>
+    );
+  }
 }
 
 export default App;

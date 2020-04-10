@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "NestZ",
@@ -22,6 +23,6 @@
     "validator": "^13.0.0"
   },
   "engines": {
-    "node" : "10.x"
+    "node": "10.x"
   }
 }
