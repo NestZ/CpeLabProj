@@ -21,10 +21,6 @@ db.once('open', () => {
     console.log('Database Connected!');
 });
 
-router.get('/', (req, res, next) => {
-    res.status(201).send("kuy");
-});
-
 router.post('/signup', async (req, res, next) => {
     try {
         const student = new Student(req.body);

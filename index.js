@@ -1,4 +1,3 @@
-// require('dotenv').config({path: '../../.env.local'});
 require('dotenv').config();
 const express = require('express');
 const bp = require('body-parser');
@@ -10,7 +9,6 @@ var cors = require('cors');
 app.use(cors());
 app.use(bp.json());
 app.use(bp.urlencoded({extended : true}));
-// exp.use(express.static(path.join(__dirname, 'build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(Router);
 
