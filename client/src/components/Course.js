@@ -1,6 +1,5 @@
 import React , { Component } from 'react';
-import 'bulma/css/bulma.css'
-import coursedata from './coursetabledata';
+import courses from './coursetabledata';
 
 export default class Course extends Component  {
   constructor(props){
@@ -8,12 +7,8 @@ export default class Course extends Component  {
     this.state = {
       isLoading: true,
       usersCourse: [],
-      allCourse : []
+      allCourse : courses
     };
-  }
-
-  refreshPage() {
-    window.location.reload(false);
   }
 
   aler(){
@@ -28,8 +23,8 @@ export default class Course extends Component  {
     if(this.state.usersCourse.length === 0)return true;
     else{
       for(let i = 0;i < this.state.usersCourse.length;i++){
-        if(this.state.usersCourse[i].day === this.state.allCourse[Id].day ||
-          this.state.usersCourse[i].time === this.state.allCourse[Id].time){
+        if((this.state.usersCourse[i].day === this.state.allCourse[Id].day) &&
+          (this.state.usersCourse[i].time === this.state.allCourse[Id].time)){
             return false;
         }
       }
@@ -42,28 +37,32 @@ export default class Course extends Component  {
       for(let j = 0;j < this.state.allCourse.length;j++){  
         if(this.state.usersCourse[i].id === this.state.allCourse[j].id){
           this.state.allCourse.splice(j, 1);
+          j--;
         }
       }
     }
-    this.setState({allCourse:this.state.allCourse});
+    this.setState({
+      allCourse : this.state.allCourse,
+      isLoading : false
+    });
   }
 
-  register = (Id) =>{
-    if(this.checktimed(Id)){
+  register = (id) =>{
+    if(this.checktimed(id)){
       this.aler1()
       fetch('/reg',{
         method : 'POST',
-        body : JSON.stringify(this.state.allCourse[Id]),
+        body : JSON.stringify(this.state.allCourse[id]),
         headers : {
           'Content-Type' : 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.getItem('token')
         },
       })
-      // this.refreshPage()
       .then(response => {
         if(response.status === 200){
-          this.state.allCourse[Id].splice(Id, 1);
-          this.setState({ allCourse:this.state.allCourse });
+          this.state.allCourse.splice(id, 1);
+          this.setState({ allCourse : this.state.allCourse });
+          this.fetchUsers();
         }
       });
     }
@@ -81,10 +80,7 @@ export default class Course extends Component  {
     })
     .then(response => response.json())
     .then(data => {
-      this.setState({
-        usersCourse: data.courses,
-        isLoading: false,
-      });
+      this.setState({ usersCourse: data.courses });
       this.checkcourse();
     })
     .catch(error => this.setState({ isLoading : false }));
@@ -92,6 +88,31 @@ export default class Course extends Component  {
 
   componentDidMount() {
     this.fetchUsers();
+  }
+
+  renderTableData(){
+    return(
+        this.state.allCourse.map((course, i) => {
+            return(
+                <tr key={i}>
+                    <td>{course.id}</td>
+                    <td>{course.name}</td>
+                    <td>{course.day}</td>
+                    <td>{course.time}</td>
+                    <td>{course.credits}</td>
+                    <td>
+                      <button
+                        className="button is-success"
+                        type="button"
+                        key={i}
+                        onClick={() => this.register(i)}>
+                          Register
+                      </button>
+                    </td>
+                </tr>
+            );
+        })
+    );
   }
 
   render(){
@@ -110,47 +131,25 @@ export default class Course extends Component  {
             </div>
           </section>
         <div className="contianer">
-        <div className="column is-three-fifths is-offset-one-fifth">
-        <table className="table is-striped is-narrow is-hoverable is-fullwidth pricing__table is-fullwidth" id="dataTable">
-          <thead>
-              <tr>
+          <div className="column is-three-fifths is-offset-one-fifth">
+            <table className="table is-striped is-narrow is-hoverable is-fullwidth pricing__table is-fullwidth" id="dataTable">
+              <thead>
+                <tr>
                   <th>CourseID</th>
-                  <th>Title</th>
+                  <th>CourseName</th>
                   <th>Day</th>
                   <th>Time</th>
                   <th>Credit</th>
                   <th>Register</th>
-              </tr>
-          </thead>
-          <tbody>
-          {
-            this.state.allCourse.map((course, i) => {
-              const { id, name, credits, time, day } = course;
-              return (
-                <div>
-                  <td>{id}</td>
-                  <td>{name}</td>
-                  <td>{day}</td>
-                  <td>{time}</td>
-                  <td>{credits}</td>
-                  <td>
-                    <button
-                      className="button is-success"
-                      type="button"
-                      key={i}
-                      onClick={() => this.register(i)}>
-                        Register
-                    </button>
-                  </td>
-                </div>
-              );
-            })
-          }
-          </tbody>
-        </table>
+                </tr>
+              </thead>
+              <tbody>
+                { !this.state.isLoading ? (this.renderTableData()) : (<h3>Loading...</h3>) }
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     );
   }
 }

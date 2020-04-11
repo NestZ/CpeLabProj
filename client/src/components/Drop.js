@@ -10,9 +10,6 @@ export default class Drop extends Component{
     }
 
     Drop = (Id) => {
-       
-        console.log("kuy"+ Id)
-        console.log("kuy"+ JSON.stringify({id : this.state.users[Id].id }) )
         fetch('/drop',{
             method : 'DELETE',
             body : JSON.stringify({id : this.state.users[Id].id }),
