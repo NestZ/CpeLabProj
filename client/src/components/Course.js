@@ -7,16 +7,16 @@ export default class Course extends Component  {
     this.state = {
       isLoading: true,
       usersCourse: [],
-      allCourse : courses
+      allCourse : []
     };
   }
 
   aler(){
-    alert("Can not register!!!!");
+    alert("Your schedule overlapping!");
   }
 
   aler1(){
-    alert("Register Succes!!!!");
+    alert("Register Success!");
   }
 
   checktimed(Id){
@@ -25,7 +25,7 @@ export default class Course extends Component  {
       for(let i = 0;i < this.state.usersCourse.length;i++){
         if((this.state.usersCourse[i].day === this.state.allCourse[Id].day) &&
           (this.state.usersCourse[i].time === this.state.allCourse[Id].time)){
-            return false;
+          return false;
         }
       }
       return true;
@@ -33,6 +33,9 @@ export default class Course extends Component  {
   }
 
   checkcourse() {
+    let temp = []
+    courses.forEach((item) => { temp.push(item) });
+    this.setState({allCourse : temp});
     for(let i = 0;i < this.state.usersCourse.length;i++){
       for(let j = 0;j < this.state.allCourse.length;j++){  
         if(this.state.usersCourse[i].id === this.state.allCourse[j].id){
@@ -48,7 +51,9 @@ export default class Course extends Component  {
   }
 
   register = (id) =>{
+    if(this.state.isLoading)alert('Do not register too fast! server is slow like turtle');
     if(this.checktimed(id)){
+      this.setState({isLoading : true});
       this.aler1()
       fetch('/reg',{
         method : 'POST',
@@ -65,6 +70,7 @@ export default class Course extends Component  {
           this.fetchUsers();
         }
       });
+      this.setState({isLoading : false});
     }
     else{
       this.aler();
@@ -75,7 +81,7 @@ export default class Course extends Component  {
     fetch('/me/course', {
         method : 'Get',
         headers : {
-            'Authorization' : 'Bearer ' + sessionStorage.getItem('token')
+          'Authorization' : 'Bearer ' + sessionStorage.getItem('token')
         }
     })
     .then(response => response.json())
@@ -144,7 +150,7 @@ export default class Course extends Component  {
                 </tr>
               </thead>
               <tbody>
-                { !this.state.isLoading ? (this.renderTableData()) : (<h3>Loading...</h3>) }
+                { !this.state.isLoading ? (this.renderTableData()) : (<tr><td>Loading...</td></tr>) }
               </tbody>
             </table>
           </div>
