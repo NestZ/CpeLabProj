@@ -51,7 +51,10 @@ export default class Course extends Component  {
   }
 
   register = (id) =>{
-    if(this.state.isLoading)alert('Do not register too fast! server is slow like turtle');
+    if(this.state.isLoading){
+      alert('Do not register too fast! server is slow like turtle');
+      return;
+    }
     if(this.checktimed(id)){
       this.setState({isLoading : true});
       this.aler1()
@@ -69,8 +72,8 @@ export default class Course extends Component  {
           this.setState({ allCourse : this.state.allCourse });
           this.fetchUsers();
         }
+        this.setState({isLoading : false});
       });
-      this.setState({isLoading : false});
     }
     else{
       this.aler();
