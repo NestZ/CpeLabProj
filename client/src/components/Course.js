@@ -7,7 +7,7 @@ export default class Course extends Component  {
     isLoading: true,
     users: [],
     error: null,
-    coursedata
+    coursedata : []
   }
   refreshPage() {
     window.location.reload(false);
@@ -57,7 +57,7 @@ export default class Course extends Component  {
       body:JSON.stringify(coursedata[Id]),
       headers :{
         'Content-Type' : 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
       },
     })
     this.refreshPage()

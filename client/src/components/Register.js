@@ -1,21 +1,21 @@
 import React , { Component } from 'react';
 import 'bulma/css/bulma.css'
 export default class Login extends Component{
-constructor(props){
-    super(props)
+  constructor(props){
+    super(props);
     this.state = {
-        name :'',
-        email:'',
-        password:''
+        name : '',
+        email: '',
+        password: ''
     };
-    }
+  }
 handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-    [name]: value
-        });
+      [name]: value
+    });
 }
-onSubmit = (event) =>{
+onSubmit = (event) => {
     event.preventDefault();
     fetch('/signup',{
         method: 'POST',
