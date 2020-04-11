@@ -49,13 +49,13 @@ const course = [{
 },
 {
     id:"8",
-    name:"Discuit Math",
+    name:"Discrete Math",
     day:"Mo-Th",
     credits:"3",
     time:"9.30-11.00"
 },
 {
-    name:"CoolAlgorithm",
+    name:"Cool Algorithm",
     id:"9",
     day:"We",
     credits:"3",
@@ -69,4 +69,4 @@ const course = [{
     time:"14.30-16.00"
 },
 ]
-export default course
+export default course;

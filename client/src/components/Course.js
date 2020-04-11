@@ -123,7 +123,7 @@ export default class Course extends Component  {
                                         <th>Register</th>
                                     </tr>
                                 </thead>
-        {this.state.coursedata.map((user,Id) => {
+        {coursedata.map((user,Id) => {
                         const {id,name,credits,time,day} = user;
                         return(
                                     <tbody id={this.name}>
