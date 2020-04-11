@@ -4,8 +4,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Student = require('../models/studentModel');
 const Auth = require('../middleware/auth');
-const conStr = 'mongodb+srv://NestZ:<password>@cluster0-y7jgs.gcp.mongodb.net/<database>?retryWrites=true&w=majority'.replace('<password>', 'NestZ')
-                                        .replace('<database>', 'reg-cmu');
+const conStr = 'mongodb+srv://NestZ:NestZ@cluster0-y7jgs.gcp.mongodb.net/reg-cmu?retryWrites=true&w=majority';
 
 mongoose.connect(conStr, {
     useNewUrlParser : true,
