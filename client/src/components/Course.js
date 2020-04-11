@@ -77,7 +77,7 @@ export default class Course extends Component  {
     fetch('/me/course', {
         method : 'Get',
         headers : {
-            'Authorization' : 'Bearer ' + localStorage.getItem('token')
+            'Authorization' : 'Bearer ' + sessionStorage.getItem('token')
         }
     })
     .then(response => response.json())
