@@ -48,7 +48,7 @@ class MainMenu extends Component {
                 <div className="column is-8-tablet is-7-desktop is-6-widescreen">
                   <div className="field">
                     <Link to="/me">
-                      <button className="button is-large is-info is-fullwidth">My schedule</button>
+                      <button className="button is-large is-info is-fullwidth" on>My Profile</button>
                     </Link>
                   </div>
                   <div className="field">
