@@ -9,6 +9,7 @@ export default class Course extends Component  {
     error: null,
     coursedata : []
   }
+
   refreshPage() {
     window.location.reload(false);
   }
@@ -50,27 +51,26 @@ export default class Course extends Component  {
 
   Register = (Id) =>{
     if(this.checktimed(Id)){
-    console.log()
-    this.aler1()
-    fetch('/reg',{
-      method :'POST',
-      body:JSON.stringify(coursedata[Id]),
-      headers :{
-        'Content-Type' : 'application/json',
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
-      },
-    })
-    this.refreshPage()
-    .then(response=>{
-      if(response.status===200 && this.checktimed(Id)){
-        delete this.state.coursedata[Id]
-        this.setState({coursedata:this.state.coursedata})
-      }
-    });
-  }
-  else{
-    this.aler()
-  }
+      this.aler1()
+      fetch('/reg',{
+        method :'POST',
+        body:JSON.stringify(this.state.coursedata[Id]),
+        headers :{
+          'Content-Type' : 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+        },
+      })
+      // this.refreshPage()
+      .then(response=>{
+        if(response.status===200){
+          delete this.state.coursedata[Id]
+          this.setState({coursedata:this.state.coursedata})
+        }
+      });
+    }
+    else{
+      this.aler()
+    }
 }
 
   fetchUsers() {
@@ -123,7 +123,7 @@ export default class Course extends Component  {
                                         <th>Register</th>
                                     </tr>
                                 </thead>
-        {coursedata.map((user,Id) => {
+        {this.state.coursedata.map((user,Id) => {
                         const {id,name,credits,time,day} = user;
                         return(
                                     <tbody id={this.name}>
@@ -132,7 +132,7 @@ export default class Course extends Component  {
                                     <td>{day}</td>
                                     <td>{time}</td>
                                     <td>{credits}</td>
-                                    <td><button className="button is-success" type="button" key={coursedata.id} onClick = {()=>this.Register(Id)}>Register</button></td>
+                                    <td><button className="button is-success" type="button" key={coursedata.id} onClick = {() => this.Register(Id)}>Register</button></td>
                                 </tbody>
                             
                         );
