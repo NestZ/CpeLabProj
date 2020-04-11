@@ -20,7 +20,6 @@ class Login extends Component{
 
     login = (event) => {
         event.preventDefault();
-        console.log(sessionStorage.getItem('token') + "kuy")
         fetch('/login', {
             method : 'POST',
             body : JSON.stringify(this.state),
