@@ -30,7 +30,7 @@ class Login extends Component{
         .then(async res => {
             if(res.status === 200) {
               const token = await res.json().then(token => token.token);
-              sessionStorage.setItem('token', token);
+              localStorage.setItem('token', token);
               this.props.history.push('/mainmenu');
             }
             else{
